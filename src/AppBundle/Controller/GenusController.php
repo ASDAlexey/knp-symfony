@@ -10,7 +10,7 @@ class GenusController extends Controller {
     /**
      * @Route("/genus/{genusName}")
      */
-    public function numberAction($genusName) {
+    public function showAction($genusName) {
         $templating = $this->container->get('templating');
         $html = $templating->render('genus/show.html.twig', ['name' => $genusName]);
         return new Response($html);
