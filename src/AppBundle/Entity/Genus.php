@@ -7,7 +7,7 @@ use Symfony\Component\Validator\Constraints\DateTime;
 
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\GenusRepository")
  * @ORM\Table(name="genus")
  */
 class Genus {
