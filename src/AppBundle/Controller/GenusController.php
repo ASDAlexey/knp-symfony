@@ -54,9 +54,7 @@ class GenusController extends Controller {
 
         if (!$genus) throw $this->createNotFoundException('No genus found');
 
-        $recentNotes = $genus->getNotes()->filter(function (GenusNote $note) {
-            return $note->getCreatedAt() > new \DateTime('-3 month');
-        });
+        $recentNotes = $em->getRepository('AppBundle:GenusNote')->findAllRecentNotesForGenus($genus);
 
 
         return $this->render('genus/show.html.twig', [
