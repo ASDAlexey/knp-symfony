@@ -15,8 +15,11 @@
                 <dd>{{ genus.speciesCount | number_format(2, '.', ',') }}</dd>
                 <dt>Fun Fact:</dt>
                 <dd>{{ genus.funFact }}</dd>
+                <dt>Recent notes</dt>
+                <dd>{{ recentNoteCount }}</dd>
             </dl>
-        </div>x
+        </div>
+        x
     </div>
     <div id="js-notes-wrapper"></div>
 {% endblock %}

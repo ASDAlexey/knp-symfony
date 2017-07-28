@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Genus;
 use AppBundle\Entity\GenusNote;
+use Faker\Provider\DateTime;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -53,8 +54,14 @@ class GenusController extends Controller {
 
         if (!$genus) throw $this->createNotFoundException('No genus found');
 
+        $recentNotes = $genus->getNotes()->filter(function (GenusNote $note) {
+            return $note->getCreatedAt() > new \DateTime('-3 month');
+        });
+
+
         return $this->render('genus/show.html.twig', [
             'genus' => $genus,
+            'recentNoteCount' => count($recentNotes),
         ]);
     }
 
@@ -69,7 +76,7 @@ class GenusController extends Controller {
             $notes[] = [
                 'id' => $note->getId(),
                 'username' => $note->getUsername(),
-                'avatarUri' => '/images/'.$note->getUserAvatarFileName(),
+                'avatarUri' => '/images/' . $note->getUserAvatarFileName(),
                 'note' => $note->getNote(),
                 'date' => $note->getCreatedAt()->format('M d, Y'),
             ];
