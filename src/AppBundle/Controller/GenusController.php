@@ -16,6 +16,8 @@ class GenusController extends Controller {
     public function newAction() {
         $genus = new Genus();
         $genus->setName('Octupus' . rand(1, 100));
+        $genus->setSubFamily('Otopodinae');
+        $genus->setSpeciesCount(rand(100, 99999));
         $em = $this->getDoctrine()->getManager();
         $em->persist($genus);
         $em->flush();
