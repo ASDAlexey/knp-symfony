@@ -26,15 +26,25 @@ class GenusController extends Controller {
     }
 
     /**
-     * @Route("/genus/{genusName}")
+     * @Route("/genus")
+     */
+    public function listAction() {
+        $em = $this->getDoctrine()->getManager();
+        $genuses = $em->getRepository('AppBundle:Genus')->findAll();
+        return $this->render('genus/list.html.twig', ['genuses' => $genuses]);
+    }
+
+    /**
+     * @Route("/genus/{genusName}", name="genus_show")
      */
     public function showAction($genusName) {
-        $fanFact = 'Lorem ipsum dolor sit amet, *consectetur* adipisicing elit. Placeat, ratione!';
-        $fanFact = $this->get('markdown.parser')->transform($fanFact);
+        $em = $this->getDoctrine()->getManager();
+        $genus = $em->getRepository('AppBundle:Genus')->findOneBy(['name' => $genusName]);
+
+        if (!$genus) throw $this->createNotFoundException('No genus found');
 
         return $this->render('genus/show.html.twig', [
-            'name' => $genusName,
-            'fanFact' => $fanFact,
+            'genus' => $genus,
         ]);
     }
 
