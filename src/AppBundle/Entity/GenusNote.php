@@ -38,6 +38,11 @@ class GenusNote {
     private $createdAt;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Genus")
+     */
+    private $genus;
+
+    /**
      * @return mixed
      */
     public function getId() {
@@ -98,5 +103,19 @@ class GenusNote {
      */
     public function setCreatedAt($createdAt) {
         $this->createdAt = $createdAt;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGenus() {
+        return $this->genus;
+    }
+
+    /**
+     * @param mixed $genus
+     */
+    public function setGenus(Genus $genus) {
+        $this->genus = $genus;
     }
 }
