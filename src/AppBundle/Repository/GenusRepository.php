@@ -2,15 +2,16 @@
 
 namespace AppBundle\Repository;
 
-
 use AppBundle\Entity\Genus;
 use Doctrine\ORM\EntityRepository;
 
-class GenusRepository extends EntityRepository {
+class GenusRepository extends EntityRepository
+{
     /**
      * @return Genus[]
      */
-    public function findAllPublishedOrderedByRecentlyActive() {
+    public function findAllPublishedOrderedByRecentlyActive()
+    {
         return $this->createQueryBuilder('genus')
             ->andWhere('genus.isPublished = :isPublished')
             ->setParameter('isPublished', true)
