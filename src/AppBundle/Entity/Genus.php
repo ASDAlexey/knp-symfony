@@ -99,7 +99,7 @@ class Genus {
      * @return mixed
      */
     public function getFunFact() {
-        return '**TEST**' . $this->funFact;
+        return '**TEST** ' . $this->funFact;
     }
 
     /**
