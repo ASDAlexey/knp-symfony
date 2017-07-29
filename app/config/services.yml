@@ -4,6 +4,9 @@ parameters:
     #parameter_name: value
 
 services:
+    app.markdown_transformer:
+            class: AppBundle\Service\MarkdownTransformer
+            arguments: ['@markdown.parser']
     # default configuration for services in *this* file
     _defaults:
         # automatically injects dependencies in your services

@@ -55,7 +55,7 @@ class GenusController extends Controller {
 
         if (!$genus) throw $this->createNotFoundException('No genus found');
 
-        $transformer = new MarkdownTransformer();
+        $transformer = $this->get('app.markdown_transformer');
         $funFact = $transformer->parse($genus->getFunFact());
 
         $recentNotes = $em->getRepository('AppBundle:GenusNote')->findAllRecentNotesForGenus($genus);
