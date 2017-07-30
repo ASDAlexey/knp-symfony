@@ -9,8 +9,12 @@ services:
         arguments: ['@markdown.parser']
 
     app.markdown_extension:
-            class: AppBundle\Twig\MarkdownExtension
-            tags:
-                - { name: twig.extension }
-            #arguments: ['@app.markdown_transformer']
-            autowire: true
+        class: AppBundle\Twig\MarkdownExtension
+        tags:
+            - { name: twig.extension }
+        #arguments: ['@app.markdown_transformer']
+        autowire: true
+
+    app.security.login_form_authenticator:
+        class: AppBundle\Security\LoginFormAuthenticator
+        autowire: true
