@@ -34,7 +34,7 @@ class User implements UserInterface {
     private $password;
 
     /**
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(groups={"Registration"})
      */
     private $plainPassword;
 

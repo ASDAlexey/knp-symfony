@@ -20,6 +20,9 @@ class UserRegistrationForm extends AbstractType {
     }
 
     public function configureOptions(OptionsResolver $resolver) {
-        $resolver->setDefaults(['data_class' => User::class]);
+        $resolver->setDefaults([
+            'data_class' => User::class,
+            'validation_groups' => ['Default', 'Registration']
+        ]);
     }
 }
