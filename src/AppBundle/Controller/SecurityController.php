@@ -24,4 +24,11 @@ class SecurityController extends Controller {
 
         return $this->render('security/login.html.twig', array('form' => $form->createView(), 'error' => $error,));
     }
+
+    /**
+     * @Route("/logout", name="security_logout")
+     */
+    public function logoutAction() {
+        throw new \Exception('This should not be reached!');
+    }
 }
